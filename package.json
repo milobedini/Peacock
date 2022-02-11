@@ -1,0 +1,20 @@
+{
+  "name": "Peacock",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/milobedini/Peacock.git",
+  "author": "Milo Bedini <milobedini64@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "serve": "npx nodemon index.js",
+    "seed": "node db/seed.js",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "express": "^4.17.2",
+    "mongoose": "^6.2.1",
+    "mongoose-unique-validator": "^3.0.0"
+  }
+}
