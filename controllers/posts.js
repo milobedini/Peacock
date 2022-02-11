@@ -1,4 +1,5 @@
 import Post from '../models/post.js'
+import User from '../models/user.js'
 
 export const getAllPosts = async (_req, res) => {
   const posts = await Post.find().populate('owner')
