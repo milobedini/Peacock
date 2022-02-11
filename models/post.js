@@ -9,14 +9,17 @@ const commentSchema = new mongoose.Schema(
   { timestamps: true }
 )
 
-const postSchema = new mongoose.Schema({
-  image: { type: String, required: true },
-  description: { type: String, required: true, maxlength: 350 },
-  owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
-  comments: [commentSchema],
-  likedBy: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
-  views: { type: Number, min: 0, default: 0 },
-})
+const postSchema = new mongoose.Schema(
+  {
+    image: { type: String, required: true },
+    description: { type: String, required: true, maxlength: 350 },
+    owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
+    comments: [commentSchema],
+    likedBy: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
+    views: { type: Number, min: 0, default: 0 },
+  },
+  { timestamps: true }
+)
 
 postSchema.set('toJSON')
 
