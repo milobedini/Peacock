@@ -2,4 +2,6 @@
 
 ## MERN Stack Social Media Platform
 
-### Photography | Events | Articles | Chat | O | Chill | K
+## Features
+
+### Photography | Events | Articles | Chat | Shop
