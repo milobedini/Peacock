@@ -1,26 +1,25 @@
 import styles from '../styles/Stories.module.scss'
-import faker from '@faker-js/faker'
 import { useEffect, useState } from 'react'
 import Story from './Story'
+import axios from 'axios'
 
 const Stories = () => {
-  const [suggestions, setSuggestions] = useState([])
+  const [stories, setStories] = useState([])
 
   useEffect(() => {
-    const suggestions = [...Array(20)].map((_x, index) => ({
-      ...faker.helpers.contextualCard(),
-      id: index,
-    }))
-    console.log(suggestions)
-    setSuggestions(suggestions)
+    const getStories = async () => {
+      const response = await axios.get('/api/users')
+      setStories(response.data)
+    }
+    getStories()
   }, [])
 
   return (
     <div className={styles.stories}>
       {/* Come back and make better scrollbar */}
-      {suggestions.map((profile) => (
+      {stories.map((profile) => (
         <Story
-          key={profile.id}
+          key={profile._id}
           img={profile.avatar}
           username={profile.username}
         />

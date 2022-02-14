@@ -17,9 +17,12 @@ const seedDatabase = async () => {
     console.log(`DB seeded with ${users.length} users.`)
 
     const postsWithOwners = postData.map((post) => {
-      post.owner = users[0]._id
+      post.owner = users[[Math.floor(Math.random() * 23)]]
       return post
     })
+
+    postsWithOwners[0].owner = users[0]._id
+    postsWithOwners[1].owner = users[1]._id
 
     const posts = await Post.create(postsWithOwners)
     console.log(`DB seeded with ${posts.length} posts.`)

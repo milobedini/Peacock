@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react'
 import styles from '../styles/Suggestions.module.scss'
-import faker from '@faker-js/faker'
+import axios from 'axios'
 
 const Suggestions = () => {
   const [suggestions, setSuggestions] = useState([])
 
   useEffect(() => {
-    const suggestions = [...Array(5)].map((_, index) => ({
-      ...faker.helpers.contextualCard(),
-      id: index,
-    }))
-    setSuggestions(suggestions)
+    const getSuggestions = async () => {
+      const response = await axios.get('/api/randomusers')
+      const suggestions = response.data
+      console.log(suggestions)
+      setSuggestions(suggestions)
+    }
+    getSuggestions()
   }, [])
 
   return (
@@ -21,7 +23,7 @@ const Suggestions = () => {
       </div>
 
       {suggestions.map((profile) => (
-        <div key={profile.id} className={styles.profile}>
+        <div key={profile._id} className={styles.profile}>
           <img
             className={styles.profileImage}
             src={profile.avatar}
@@ -29,7 +31,7 @@ const Suggestions = () => {
           />
           <div className={styles.usernameWorks}>
             <h2 className={styles.username}>{profile.username}</h2>
-            <h3 className={styles.worksAt}>Works at {profile.company.name}</h3>
+            {/* <h3 className={styles.worksAt}>Works at {profile.company.name}</h3> */}
           </div>
           <button className={styles.profButton}>Follow</button>
         </div>

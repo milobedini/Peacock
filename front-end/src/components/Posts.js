@@ -1,46 +1,27 @@
 // import styles from '../styles/Posts.module.scss'
+import { useEffect, useState } from 'react'
 import Post from './Post'
-
-const testData = [
-  {
-    id: '1',
-    username: 'milobedini',
-    userImage:
-      'https://res.cloudinary.com/dvgbdioec/image/upload/v1641473906/x92clfsasiacrsyoxci6.jpg',
-    postImage:
-      'https://res.cloudinary.com/dvgbdioec/image/upload/v1644768223/peacock_yevwhu.png',
-    caption: 'Spread your wings. ',
-  },
-  {
-    id: '2',
-    username: 'milobedini',
-    userImage:
-      'https://res.cloudinary.com/dvgbdioec/image/upload/v2641473906/x92clfsasiacrsyoxci6.jpg',
-    postImage:
-      'https://res.cloudinary.com/dvgbdioec/image/upload/v1644768223/peacock_yevwhu.png',
-    caption: 'Spread your wings. ',
-  },
-  {
-    id: '3',
-    username: 'milobedini',
-    userImage:
-      'https://res.cloudinary.com/dvgbdioec/image/upload/v1641473906/x92clfsasiacrsyoxci6.jpg',
-    postImage:
-      'https://res.cloudinary.com/dvgbdioec/image/upload/v1644768223/peacock_yevwhu.png',
-    caption: 'Spread your wings. ',
-  },
-]
+import axios from 'axios'
 
 const Posts = () => {
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    const getPosts = async () => {
+      const response = await axios.get('/api/posts')
+      setPosts(response.data)
+    }
+    getPosts()
+  }, [])
   return (
     <div>
-      {testData.map((post) => (
+      {posts.map((post) => (
         <Post
-          key={post.id}
-          id={post.id}
-          username={post.username}
-          userImage={post.userImage}
-          postImage={post.postImage}
+          key={post._id}
+          id={post._id}
+          username={post.owner.username}
+          userImage={post.owner.avatar}
+          postImage={post.image}
           caption={post.caption}
         />
       ))}

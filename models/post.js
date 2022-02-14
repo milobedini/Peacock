@@ -12,7 +12,7 @@ const commentSchema = new mongoose.Schema(
 const postSchema = new mongoose.Schema(
   {
     image: { type: String, required: true },
-    description: { type: String, required: true, maxlength: 350 },
+    caption: { type: String, required: true, maxlength: 350 },
     owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
     comments: [commentSchema],
     likedBy: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],

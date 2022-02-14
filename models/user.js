@@ -4,8 +4,9 @@ import bcrypt from 'bcrypt'
 
 const userSchema = new mongoose.Schema({
   email: { type: String, unique: true, required: true },
-  fullname: { type: String, maxlength: 30, required: true },
+  username: { type: String, maxlength: 30, required: true },
   password: { type: String, required: true },
+  avatar: { type: String },
 })
 
 userSchema.virtual('createdPosts', {
