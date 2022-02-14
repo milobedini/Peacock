@@ -1,16 +1,16 @@
-import PostList from './pages/PostList'
+import Feed from './pages/Feed'
+import Header from './components/Header'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import styles from './styles/Home.module.scss'
 
 function App() {
   return (
-    <div className="App">
+    <div className={styles.container}>
       <BrowserRouter>
-        <main>
-          <h1>Peacock</h1>
-          <Routes>
-            <Route path="/posts" element={<PostList />} />
-          </Routes>
-        </main>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Feed />} />
+        </Routes>
       </BrowserRouter>
     </div>
   )

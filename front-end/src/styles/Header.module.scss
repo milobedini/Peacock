@@ -1,0 +1,157 @@
+.logoWrapper {
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.headerBand {
+  margin-top: 4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  max-width: 84rem;
+  margin: 0 1.25rem;
+}
+.headerWrapper {
+  box-shadow: 0 1px 2px 0 #26a96c;
+  border-bottom-width: 1px;
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+@media only screen and (min-width: 1000px) {
+  .headerBand {
+    margin: 4px auto 0 auto;
+  }
+}
+
+.searchIcon {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.searchIconWrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  padding-left: 0.75rem;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.middleHeader {
+  position: relative;
+  padding: 0.75rem;
+  border-radius: 10%;
+  max-width: 20rem;
+  input {
+    background-color: #efefef;
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: 1rem 1rem 1rem 2.5rem;
+    border-radius: 1rem;
+  }
+  input:focus {
+    border: 1px solid #004a8f;
+  }
+}
+
+.rightIcon {
+  height: 2.5rem;
+  width: 2.5rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  transition: all 150ms ease-out;
+}
+.rightIcons {
+  height: 2.5rem;
+  width: 2.5rem;
+  margin-left: 1rem;
+  cursor: pointer;
+  transition: all 150ms ease-out;
+}
+.rightIcons:hover,
+.rightIcon:hover,
+.airplaneWrapper:hover {
+  scale: 1.25;
+}
+@media only screen and (max-width: 1000px) {
+  .rightIcons {
+    display: none;
+  }
+}
+
+.burgerIcon {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+@media only screen and (min-width: 1000px) {
+  .burgerIcon {
+    display: none;
+  }
+}
+
+.rightHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+@media only screen and (max-width: 1000px) {
+  .headerBand {
+    margin: 4px auto 0 auto;
+  }
+  .airplaneWrapper {
+    display: none;
+  }
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.airplaneWrapper {
+  position: relative;
+  cursor: pointer;
+  transition: all 150ms ease-out;
+}
+
+.airplaneNumber {
+  position: absolute;
+  font-size: small;
+  top: -4px;
+  right: 2px;
+  color: white;
+  border-radius: 50%;
+  height: 1.25rem;
+  width: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fa3e3e;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+}
+
+.headerLogo {
+  object-fit: contain;
+  height: 100%;
+}

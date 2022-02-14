@@ -1,0 +1,51 @@
+.suggestionsWrapper {
+  margin-top: 0.75rem;
+  margin-left: 2.5rem;
+}
+
+.suggestionsButton {
+  display: flex;
+  justify-content: space-between;
+  font-size: smaller;
+  margin-bottom: 1rem;
+}
+
+.suggestionsHeader {
+  font-weight: 400;
+}
+.button {
+  font-weight: bolder;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.profileImage {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px solid black;
+  padding: 2px;
+}
+
+.username {
+  font-weight: bolder;
+  font-size: small;
+}
+.worksAt {
+  font-size: x-small;
+  color: rgb(156 163 175);
+}
+.usernameWorks {
+  flex: 1;
+  margin-left: 0.75rem;
+}
+
+.profButton {
+  color: #004a8f;
+  font-weight: bold;
+}

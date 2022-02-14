@@ -1,0 +1,91 @@
+.dots {
+  height: 1.25rem;
+}
+.userImage {
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+  object-fit: contain;
+  border: 1px solid black;
+  padding: 2px;
+  margin-right: 0.75rem;
+}
+
+.postHeader {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem;
+}
+
+.username {
+  flex: 1;
+  font-weight: bold;
+}
+
+.post {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.postImage {
+  object-fit: cover;
+  width: 100%;
+}
+
+.postButton {
+  height: 1.75rem;
+  transition: all 150ms ease-out;
+  cursor: pointer;
+  margin-right: 6px;
+}
+.postButton:hover {
+  scale: 1.25;
+}
+
+.postButtonContainer {
+  display: flex;
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.captionText {
+  padding: 1.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  span {
+    font-weight: bold;
+    margin-right: 0.75rem;
+  }
+}
+
+.happyIcon {
+  height: 2rem;
+}
+
+.postForm {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem;
+  input {
+    border: none;
+    // background-color: #eef6ff;
+    flex: 1;
+  }
+  input:focus {
+    outline: none;
+  }
+}
+
+.commentButton {
+  font-weight: bolder;
+  color: #004a8f;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
