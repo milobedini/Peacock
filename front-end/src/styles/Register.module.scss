@@ -1,0 +1,18 @@
+.lotContainer {
+  height: 300px;
+  flex: 0.3;
+}
+
+.registerWrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 8rem;
+  align-items: center;
+}
+
+.formWrapper {
+  flex: 0.7;
+}
+.registerForm {
+  width: 100%;
+}

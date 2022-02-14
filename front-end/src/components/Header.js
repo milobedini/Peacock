@@ -9,6 +9,7 @@ import {
   SearchIcon,
   UserGroupIcon,
 } from '@heroicons/react/solid'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
@@ -16,12 +17,9 @@ const Header = () => {
       <div className={styles.headerBand}>
         {/* left */}
         <div className={styles.logoWrapper}>
-          <img
-            className={styles.headerLogo}
-            src={logo}
-            alt="Peacock logo"
-            layout="fill"
-          />
+          <Link to="/">
+            <img className={styles.headerLogo} src={logo} alt="Peacock logo" />
+          </Link>
         </div>
 
         {/* middle, search */}
@@ -42,11 +40,13 @@ const Header = () => {
           <PlusCircleIcon className={styles.rightIcons} color="#26A96C" />
           <UserGroupIcon className={styles.rightIcons} color="#26A96C" />
           <HeartIcon className={styles.rightIcons} color="#26A96C" />
-          <img
-            className={`${styles.avatar} ${styles.rightIcons} `}
-            src="https://res.cloudinary.com/dvgbdioec/image/upload/v1641473906/x92clfsasiacrsyoxci6.jpg"
-            alt="profile"
-          />
+          <Link to="/register">
+            <img
+              className={`${styles.avatar} ${styles.rightIcons} `}
+              src="https://res.cloudinary.com/dvgbdioec/image/upload/v1641473906/x92clfsasiacrsyoxci6.jpg"
+              alt="profile"
+            />
+          </Link>
         </div>
       </div>
     </div>
