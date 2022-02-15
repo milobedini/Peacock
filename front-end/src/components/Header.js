@@ -13,7 +13,7 @@ import { useEffect, useState } from 'react'
 import { getToken } from '../helpers/auth'
 import axios from 'axios'
 
-const Header = ({ isLoggedIn, setIsLoggedIn }) => {
+const Header = ({ isLoggedIn }) => {
   const [avatar, setAvatar] = useState('')
   useEffect(() => {
     async function getProfPic() {
