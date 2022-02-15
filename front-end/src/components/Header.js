@@ -9,8 +9,28 @@ import {
   UserGroupIcon,
 } from '@heroicons/react/solid'
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { getToken } from '../helpers/auth'
+import axios from 'axios'
 
-const Header = () => {
+const Header = ({ isLoggedIn, setIsLoggedIn }) => {
+  const [avatar, setAvatar] = useState('')
+  useEffect(() => {
+    async function getProfPic() {
+      const config = {
+        method: 'get',
+        url: '/api/profile',
+        headers: {
+          Authorization: `Bearer ${getToken()}`,
+          'Content-Type': 'application/json',
+        },
+      }
+      const response = await axios(config)
+      setAvatar(response.data.avatar)
+    }
+    getProfPic()
+  }, [isLoggedIn])
+
   return (
     <div className={styles.headerWrapper}>
       <div className={styles.headerBand}>
@@ -34,13 +54,14 @@ const Header = () => {
           <PlusCircleIcon className={styles.rightIcons} color="#26A96C" />
           <UserGroupIcon className={styles.rightIcons} color="#26A96C" />
           <HeartIcon className={styles.rightIcons} color="#26A96C" />
-          <Link to="/register">
+          {isLoggedIn ? (
             <img
               className={`${styles.avatar} ${styles.rightIcons} `}
-              src="https://res.cloudinary.com/dvgbdioec/image/upload/v1641473906/x92clfsasiacrsyoxci6.jpg"
+              // src="https://res.cloudinary.com/dvgbdioec/image/upload/v1641473906/x92clfsasiacrsyoxci6.jpg"
+              src={avatar}
               alt="profile"
             />
-          </Link>
+          ) : null}
         </div>
       </div>
     </div>

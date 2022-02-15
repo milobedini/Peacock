@@ -31,3 +31,14 @@ export const getRandomUsers = async (_req, res) => {
   shuffled.splice(6, 19)
   return res.status(200).json(shuffled)
 }
+
+export const getUserProfile = async (req, res) => {
+  try {
+    const user = await User.findById(req.currentUser._id)
+    if (!user) throw new Error()
+    return res.status(200).json(user)
+  } catch (err) {
+    console.log(err)
+    return res.status(404).json({ message: 'Not Found' })
+  }
+}

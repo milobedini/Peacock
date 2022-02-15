@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import styles from '../styles/Register.module.scss'
 import lottie from 'lottie-web'
 import axios from 'axios'
@@ -39,7 +39,6 @@ const Register = () => {
     if (error) {
       setIsError(true)
       setErrorInfo(error.response.data)
-      console.log(error.response)
     }
   }
 
@@ -109,6 +108,11 @@ const Register = () => {
           <div className={styles.inputDiv}>
             <input type="submit" id="submit" value="Register" />
             <label className={styles.formLabel} htmlFor="submit"></label>
+          </div>
+          <div>
+            <p className={styles.notRegYet}>
+              <Link to="/login">Already registered? Sign in here.</Link>
+            </p>
           </div>
           {isError ? (
             <div className={styles.errorDiv}>
