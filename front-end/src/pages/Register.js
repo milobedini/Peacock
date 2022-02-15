@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from '../styles/Register.module.scss'
 import lottie from 'lottie-web'
+import axios from 'axios'
 
 const Register = () => {
   const lotContainer = useRef(null)
@@ -26,16 +27,51 @@ const Register = () => {
   const [isError, setIsError] = useState(false)
   const navigate = useNavigate()
 
+  const handleFormChange = (event) => {
+    const { name, value } = event.target
+    setData({
+      ...data,
+      [name]: value,
+    })
+    console.log(data)
+  }
+
+  const handleError = (error) => {
+    if (error) {
+      setIsError(true)
+      setErrorInfo(error.message)
+      console.log(error)
+    }
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    try {
+      const res = await axios.post('/api/register', data)
+      console.log(res.data)
+      handleSuccessfulRegister()
+    } catch (err) {
+      console.log(err)
+      handleError(err)
+    }
+  }
+
+  const handleSuccessfulRegister = () => {
+    setIsError(false)
+    navigate('/login')
+  }
+
   return (
     <div className={styles.registerWrapper}>
       <div className={styles.formWrapper}>
-        <form className={styles.registerForm}>
+        <form className={styles.registerForm} onSubmit={handleSubmit}>
           <div className={styles.inputDiv}>
             <input
               type="email"
               id="email"
               name="email"
               placeholder="Your Email"
+              onChange={handleFormChange}
             />
             <label className={styles.formLabel} htmlFor="email"></label>
           </div>
@@ -45,6 +81,7 @@ const Register = () => {
               id="username"
               name="username"
               placeholder="Your Username"
+              onChange={handleFormChange}
             />
             <label className={styles.formLabel} htmlFor="username"></label>
           </div>
@@ -54,6 +91,7 @@ const Register = () => {
               id="password"
               name="password"
               placeholder="Password"
+              onChange={handleFormChange}
             />
             <label className={styles.formLabel} htmlFor="password"></label>
           </div>
@@ -62,12 +100,17 @@ const Register = () => {
               type="password"
               id="passwordConfirmation"
               name="passwordConfirmation"
-              placeholder="Repeat your password"
+              placeholder="Password Again"
+              onChange={handleFormChange}
             />
             <label
               className={styles.formLabel}
               htmlFor="passwordConfirmation"
             ></label>
+          </div>
+          <div className={styles.inputDiv}>
+            <input type="submit" id="submit" value="Register" />
+            <label className={styles.formLabel} htmlFor="submit"></label>
           </div>
         </form>
       </div>

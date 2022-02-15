@@ -6,7 +6,6 @@ import {
   MenuIcon,
   PaperAirplaneIcon,
   PlusCircleIcon,
-  SearchIcon,
   UserGroupIcon,
 } from '@heroicons/react/solid'
 import { Link } from 'react-router-dom'
@@ -23,12 +22,7 @@ const Header = () => {
         </div>
 
         {/* middle, search */}
-        <div className={styles.middleHeader}>
-          <div className={styles.searchIconWrapper}>
-            <SearchIcon color="#004A8F" className={styles.searchIcon} />
-          </div>
-          <input type="text" placeholder="Search" />
-        </div>
+
         {/* right */}
         <div className={styles.rightHeader}>
           <HomeIcon className={styles.rightIcon} color="#26A96C" />
