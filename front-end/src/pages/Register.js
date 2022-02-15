@@ -33,14 +33,13 @@ const Register = () => {
       ...data,
       [name]: value,
     })
-    console.log(data)
   }
 
   const handleError = (error) => {
     if (error) {
       setIsError(true)
-      setErrorInfo(error.message)
-      console.log(error)
+      setErrorInfo(error.response.data)
+      console.log(error.response)
     }
   }
 
@@ -51,7 +50,6 @@ const Register = () => {
       console.log(res.data)
       handleSuccessfulRegister()
     } catch (err) {
-      console.log(err)
       handleError(err)
     }
   }
@@ -112,6 +110,14 @@ const Register = () => {
             <input type="submit" id="submit" value="Register" />
             <label className={styles.formLabel} htmlFor="submit"></label>
           </div>
+          {isError ? (
+            <div className={styles.errorDiv}>
+              <p>
+                <strong>Something went wrong registering:</strong>
+              </p>
+              <p>{errorInfo.message}</p>
+            </div>
+          ) : null}
         </form>
       </div>
       <div>
