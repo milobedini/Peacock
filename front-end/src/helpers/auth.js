@@ -9,3 +9,15 @@ export const setToken = (token) => {
 export const removeToken = () => {
   window.localStorage.removeItem('token')
 }
+
+export const getUserId = () => {
+  return window.localStorage.getItem('userId')
+}
+
+export const setUserId = (userId) => {
+  window.localStorage.setItem('userId', userId)
+}
+
+export const removeUserId = () => {
+  window.localStorage.removeItem('userId')
+}

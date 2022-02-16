@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react'
 import styles from '../styles/Suggestions.module.scss'
 import axios from 'axios'
+import { getUserId } from '../helpers/auth'
 
 const Suggestions = () => {
   const [suggestions, setSuggestions] = useState([])
 
   useEffect(() => {
     const getSuggestions = async () => {
+      const userId = getUserId()
       const response = await axios.get('/api/randomusers')
-      const suggestions = response.data
+      const suggestions = response.data.filter((user) => user._id !== userId)
       console.log(suggestions)
       setSuggestions(suggestions)
     }
@@ -31,7 +33,6 @@ const Suggestions = () => {
           />
           <div className={styles.usernameWorks}>
             <h2 className={styles.username}>{profile.username}</h2>
-            {/* <h3 className={styles.worksAt}>Works at {profile.company.name}</h3> */}
           </div>
           <button className={styles.profButton}>Follow</button>
         </div>

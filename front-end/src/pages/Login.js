@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import styles from '../styles/Register.module.scss'
 import lottie from 'lottie-web'
 import axios from 'axios'
-import { setToken } from '../helpers/auth'
+import { setToken, setUserId } from '../helpers/auth'
 
 const Login = ({ setIsLoggedIn }) => {
   const lotContainer = useRef(null)
@@ -51,9 +51,11 @@ const Login = ({ setIsLoggedIn }) => {
     }
   }
 
-  const handleSuccessfulLogin = ({ token }) => {
+  const handleSuccessfulLogin = ({ token, id }) => {
+    console.log(id)
     setIsError(false)
     setToken(token)
+    setUserId(id)
     setIsLoggedIn(true)
     navigate('/')
   }

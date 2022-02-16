@@ -19,8 +19,9 @@ export function shuffle(array) {
 
   return array
 }
-export const getAllUsers = async (_req, res) => {
+export const getAllUsers = async (req, res) => {
   const users = await User.find()
+  console.log(req.currentUser)
   const shuffled = shuffle(users)
   return res.status(200).json(shuffled)
 }
@@ -28,7 +29,7 @@ export const getAllUsers = async (_req, res) => {
 export const getRandomUsers = async (_req, res) => {
   const users = await User.find()
   const shuffled = shuffle(users)
-  shuffled.splice(6, 19)
+  shuffled.splice(7, 19)
   return res.status(200).json(shuffled)
 }
 

@@ -17,6 +17,9 @@ const Header = ({ isLoggedIn }) => {
   const [avatar, setAvatar] = useState('')
   useEffect(() => {
     async function getProfPic() {
+      if (!isLoggedIn) {
+        return
+      }
       const config = {
         method: 'get',
         url: '/api/profile',
@@ -45,7 +48,9 @@ const Header = ({ isLoggedIn }) => {
 
         {/* right */}
         <div className={styles.rightHeader}>
-          <HomeIcon className={styles.rightIcon} color="#26A96C" />
+          <Link to="/">
+            <HomeIcon className={styles.rightIcon} color="#26A96C" />
+          </Link>
           <MenuIcon className={styles.burgerIcon} color="#26A96C" />
           <div className={styles.airplaneWrapper}>
             <PaperAirplaneIcon className={styles.rightIcons} color="#26A96C" />
