@@ -8,9 +8,11 @@ import Login from './pages/Login'
 import { getToken } from './helpers/auth'
 import Profile from './pages/Profile'
 import NewPost from './pages/NewPost'
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
 
   useEffect(() => {
     if (getToken()) {
@@ -23,12 +25,22 @@ function App() {
   return (
     <div className={styles.container}>
       <BrowserRouter>
-        <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+        <Header
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+          modalOpen={modalOpen}
+          setModalOpen={setModalOpen}
+        />
         <Routes>
           <Route
             path="/"
             element={
-              <Feed isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+              <Feed
+                isLoggedIn={isLoggedIn}
+                setIsLoggedIn={setIsLoggedIn}
+                modalOpen={modalOpen}
+                setModalOpen={setModalOpen}
+              />
             }
           />
           <Route path="/register" element={<Register />} />

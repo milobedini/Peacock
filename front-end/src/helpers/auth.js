@@ -21,3 +21,15 @@ export const setUserId = (userId) => {
 export const removeUserId = () => {
   window.localStorage.removeItem('userId')
 }
+
+export const getUsername = () => {
+  return window.localStorage.getItem('username')
+}
+
+export const setUsername = (username) => {
+  window.localStorage.setItem('username', username)
+}
+
+export const removeUsername = () => {
+  window.localStorage.removeItem('username')
+}

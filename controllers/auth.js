@@ -27,6 +27,7 @@ export const loginUser = async (req, res) => {
       message: `Welcome back, ${userToLogin.username}`,
       token: token,
       id: userToLogin._id,
+      username: userToLogin.username,
     })
   } catch (err) {
     console.log(err)

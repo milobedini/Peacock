@@ -3,10 +3,49 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   textArea {
     min-height: 6rem;
+    padding-top: 0.5rem;
   }
+}
+.formWrapper {
+  background: #e0e9f3;
+  padding-bottom: 1rem;
 }
 .inputDiv {
   width: 80%;
+}
+
+.closeIcon {
+  height: 3rem;
+  width: 3rem;
+  cursor: pointer;
+}
+
+.closeIconWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 7%;
+  h2 {
+    color: #1e9577;
+  }
+}
+.wrapper {
+  border: 1px solid #1e9577;
+  margin-top: 2rem;
+
+  border-radius: 8px;
+  background: white;
+}
+
+.previewPic {
+  // margin: 1.5rem 0;
+  border-radius: 8px;
+  // background-color: white;
+  img {
+    object-fit: cover;
+    width: 100%;
+  }
 }

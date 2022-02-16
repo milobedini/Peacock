@@ -1,13 +1,13 @@
 import styles from '../styles/NewPost.module.scss'
-import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
-import { getToken } from '../helpers/auth'
+import { getToken, getUsername } from '../helpers/auth'
 import { toast, ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import { XIcon } from '@heroicons/react/solid'
+import ImageUploadField from '../components/ImageUploadField'
 
-const NewPost = () => {
-  const navigate = useNavigate()
+const NewPost = ({ setModalOpen }) => {
+  const username = getUsername()
 
   const [data, setData] = useState({
     image: '',
@@ -40,7 +40,7 @@ const NewPost = () => {
       })
 
       setTimeout(() => {
-        navigate('/')
+        setModalOpen(false)
       }, 3000)
     } catch (err) {
       console.log(err)
@@ -56,20 +56,27 @@ const NewPost = () => {
     console.log(data)
   }
 
+  const handleImageUrl = (url) => {
+    setData({ ...data, image: url })
+  }
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.formWrapper}>
+        <div className={styles.closeIconWrapper}>
+          <h2>{username}</h2>
+          <XIcon
+            className={styles.closeIcon}
+            color="#fa3e3e"
+            onClick={() => setModalOpen(false)}
+          />
+        </div>
         <form className={styles.form} onSubmit={handleSubmit}>
-          <div className={styles.inputDiv}>
-            <input
-              type="file"
-              id="image"
-              name="image"
-              placeholder="Your Photo"
-              onChange={handleFormChange}
-            />
-            <label className={styles.formLabel} htmlFor="image"></label>
-          </div>
+          <ImageUploadField
+            value={data.image}
+            handleImageUrl={handleImageUrl}
+          />
+
           <div className={styles.inputDiv}>
             <textarea
               type="textarea"

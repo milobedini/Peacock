@@ -1,13 +1,19 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getToken, removeToken, removeUserId } from '../helpers/auth'
+import {
+  getToken,
+  removeToken,
+  removeUserId,
+  removeUsername,
+} from '../helpers/auth'
 import styles from '../styles/MiniProfile.module.scss'
 
 const MiniProfile = ({ isLoggedIn, setIsLoggedIn }) => {
   const handleLogout = () => {
     removeToken()
     removeUserId()
+    removeUsername()
     setIsLoggedIn(false)
   }
   const [profile, setProfile] = useState({})

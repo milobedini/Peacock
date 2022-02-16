@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react'
 import { getToken } from '../helpers/auth'
 import axios from 'axios'
 
-const Header = ({ isLoggedIn }) => {
+const Header = ({ isLoggedIn, modalOpen, setModalOpen }) => {
   const [avatar, setAvatar] = useState('')
   useEffect(() => {
     async function getProfPic() {
@@ -55,9 +55,13 @@ const Header = ({ isLoggedIn }) => {
           {isLoggedIn ? (
             <>
               <MenuIcon className={styles.burgerIcon} color="#26A96C" />
-              <Link to="/newpost">
-                <PlusIcon className={styles.rightIcons} color="#26A96C" />
-              </Link>
+              {/* <Link to="/newpost"> */}
+              <PlusIcon
+                className={`${styles.rightIcons} openModalBtn`}
+                color="#26A96C"
+                onClick={() => setModalOpen(true)}
+              />
+              {/* </Link> */}
               <div className={styles.airplaneWrapper}>
                 <PaperAirplaneIcon
                   className={styles.rightIcons}

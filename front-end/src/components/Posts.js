@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import Post from './Post'
 import axios from 'axios'
 
-const Posts = () => {
+const Posts = ({ modalOpen }) => {
   const [posts, setPosts] = useState([])
 
   useEffect(() => {
@@ -12,7 +12,7 @@ const Posts = () => {
       setPosts(response.data)
     }
     getPosts()
-  }, [])
+  }, [modalOpen])
   return (
     <div>
       {posts.map((post) => (
