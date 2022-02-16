@@ -33,10 +33,10 @@
     border-radius: 7rem;
     background-color: #1e9577;
     color: white;
+    transition: all 0.4s ease;
   }
   button:hover {
     background-color: #eef6ff;
-    transition: all 0.2s ease-out;
     color: #1e9577;
     font-size: large;
     border: 1px solid red;

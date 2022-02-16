@@ -31,7 +31,7 @@ const Profile = () => {
         <img src={profile.avatar} alt="Profile" />
       </div>
       <div className={styles.editProfile}>
-        <button>Edit Profile</button>
+        <button>Change Avatar</button>
       </div>
     </div>
   )

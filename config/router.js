@@ -1,6 +1,6 @@
 import express from 'express'
 import { loginUser, registerUser } from '../controllers/auth.js'
-import { getAllPosts } from '../controllers/posts.js'
+import { addPost, getAllPosts } from '../controllers/posts.js'
 import {
   getAllUsers,
   getRandomUsers,
@@ -10,7 +10,7 @@ import { secureRoute } from './secureRoute.js'
 
 const router = express.Router()
 
-router.route('/posts').get(getAllPosts)
+router.route('/posts').get(getAllPosts).post(secureRoute, addPost)
 
 router.route('/users').get(getAllUsers)
 

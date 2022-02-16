@@ -7,6 +7,7 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import { getToken } from './helpers/auth'
 import Profile from './pages/Profile'
+import NewPost from './pages/NewPost'
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -36,6 +37,7 @@ function App() {
             element={<Login setIsLoggedIn={setIsLoggedIn} />}
           />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/newpost" element={<NewPost />} />
         </Routes>
       </BrowserRouter>
     </div>

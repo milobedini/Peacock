@@ -1,0 +1,12 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  textArea {
+    min-height: 6rem;
+  }
+}
+.inputDiv {
+  width: 80%;
+}

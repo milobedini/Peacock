@@ -23,13 +23,31 @@ button {
   cursor: pointer;
 }
 
-input {
+input,
+textarea {
   width: 100%;
   margin-top: 1.5rem;
   height: 2.5rem;
   border: none;
+  outline: none;
   border-radius: 8px;
   padding-left: 0.75rem;
   color: #07084a;
   font-weight: bolder;
+}
+
+form {
+  #submit,
+  #post-submit {
+    background: #1e9577;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    transition: all 150ms ease-out;
+  }
+}
+#post-submit:hover {
+  height: 120%;
+  background-color: #fa3e3e;
+  color: #07084a;
 }

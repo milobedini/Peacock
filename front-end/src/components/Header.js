@@ -6,6 +6,7 @@ import {
   MenuIcon,
   PaperAirplaneIcon,
   PlusCircleIcon,
+  PlusIcon,
   UserGroupIcon,
 } from '@heroicons/react/solid'
 import { Link } from 'react-router-dom'
@@ -51,22 +52,30 @@ const Header = ({ isLoggedIn }) => {
           <Link to="/">
             <HomeIcon className={styles.rightIcon} color="#26A96C" />
           </Link>
-          <MenuIcon className={styles.burgerIcon} color="#26A96C" />
-          <div className={styles.airplaneWrapper}>
-            <PaperAirplaneIcon className={styles.rightIcons} color="#26A96C" />
-            <div className={styles.airplaneNumber}>3</div>
-          </div>
-          <UserGroupIcon className={styles.rightIcons} color="#26A96C" />
-          <HeartIcon className={styles.rightIcons} color="#26A96C" />
           {isLoggedIn ? (
-            <Link to="/profile">
-              <img
-                className={`${styles.avatar} ${styles.rightIcons} `}
-                // src="https://res.cloudinary.com/dvgbdioec/image/upload/v1641473906/x92clfsasiacrsyoxci6.jpg"
-                src={avatar}
-                alt="profile"
-              />
-            </Link>
+            <>
+              <MenuIcon className={styles.burgerIcon} color="#26A96C" />
+              <Link to="/newpost">
+                <PlusIcon className={styles.rightIcons} color="#26A96C" />
+              </Link>
+              <div className={styles.airplaneWrapper}>
+                <PaperAirplaneIcon
+                  className={styles.rightIcons}
+                  color="#26A96C"
+                />
+                <div className={styles.airplaneNumber}>3</div>
+              </div>
+              <UserGroupIcon className={styles.rightIcons} color="#26A96C" />
+              <HeartIcon className={styles.rightIcons} color="#26A96C" />
+              <Link to="/profile">
+                <img
+                  className={`${styles.avatar} ${styles.rightIcons} `}
+                  // src="https://res.cloudinary.com/dvgbdioec/image/upload/v1641473906/x92clfsasiacrsyoxci6.jpg"
+                  src={avatar}
+                  alt="profile"
+                />
+              </Link>
+            </>
           ) : (
             <Link to="/register">
               <PlusCircleIcon className={styles.rightIcons} color="#26A96C" />
