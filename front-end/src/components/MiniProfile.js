@@ -34,16 +34,11 @@ const MiniProfile = ({ isLoggedIn, setIsLoggedIn }) => {
     <div className={styles.miniProfileWrapper}>
       {isLoggedIn ? (
         <img
-          // src="https://res.cloudinary.com/dvgbdioec/image/upload/v1641473906/x92clfsasiacrsyoxci6.jpg"
           src={profile.avatar}
           alt="Milo"
           className={styles.miniProfilePic}
         />
       ) : null}
-      {/* <div className={styles.usernameWelcome}>
-        <p className={styles.username}>milobedini</p>
-        <p className={styles.welcome}>Welcome to Peacock</p>
-      </div> */}
       <div className={styles.usernameWelcome}>
         {isLoggedIn ? (
           <p className={styles.username}>{profile.username}</p>

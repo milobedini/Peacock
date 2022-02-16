@@ -6,7 +6,11 @@ const userSchema = new mongoose.Schema({
   email: { type: String, unique: true, required: true },
   username: { type: String, maxlength: 30, required: true },
   password: { type: String, required: true },
-  avatar: { type: String },
+  avatar: {
+    type: String,
+    default:
+      'https://res.cloudinary.com/dvgbdioec/image/upload/v1645002656/peacock_1_cgjc6x.png',
+  },
 })
 
 userSchema.virtual('createdPosts', {
