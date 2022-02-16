@@ -2,9 +2,12 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { getToken } from '../helpers/auth'
 import styles from '../styles/Profile.module.scss'
+import { Link } from 'react-router-dom'
+import AvatarEdit from './AvatarEdit'
 
 const Profile = () => {
   const [profile, setProfile] = useState({})
+  const [modalOpen, setModalOpen] = useState(false)
 
   useEffect(() => {
     async function getProfile() {
@@ -27,12 +30,19 @@ const Profile = () => {
         Hey <span>{profile.username}</span>
       </h2>
       <p>Your email - {profile.email}</p>
-      <div className={styles.imageContainer}>
-        <img src={profile.avatar} alt="Profile" />
-      </div>
-      <div className={styles.editProfile}>
-        <button>Change Avatar</button>
-      </div>
+      {!modalOpen && (
+        <>
+          <div className={styles.imageContainer}>
+            <img src={profile.avatar} alt="Profile" />
+          </div>
+          <div className={styles.editProfile}>
+            <button onClick={() => setModalOpen(true)}>Change Avatar</button>
+          </div>
+        </>
+      )}
+      {modalOpen && (
+        <AvatarEdit modalOpen={modalOpen} setModalOpen={setModalOpen} />
+      )}
     </div>
   )
 }
