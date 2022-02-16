@@ -1,0 +1,44 @@
+.profileWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem;
+  background-color: white;
+  width: 80%;
+  margin: 2rem auto;
+  min-height: 84vh;
+}
+.heading {
+  font-weight: 400;
+  span {
+    font-weight: bold;
+  }
+}
+.imageContainer {
+  max-height: 20rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+
+  img {
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
+.editProfile {
+  margin-top: 4rem;
+  button {
+    padding: 1rem;
+    border-radius: 7rem;
+    background-color: #1e9577;
+    color: white;
+  }
+  button:hover {
+    background-color: #eef6ff;
+    transition: all 0.2s ease-out;
+    color: #1e9577;
+    font-size: large;
+    border: 1px solid red;
+  }
+}

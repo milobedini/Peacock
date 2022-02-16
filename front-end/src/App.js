@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import { getToken } from './helpers/auth'
+import Profile from './pages/Profile'
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -34,6 +35,7 @@ function App() {
             path="/login"
             element={<Login setIsLoggedIn={setIsLoggedIn} />}
           />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </BrowserRouter>
     </div>

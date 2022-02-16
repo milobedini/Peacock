@@ -56,17 +56,22 @@ const Header = ({ isLoggedIn }) => {
             <PaperAirplaneIcon className={styles.rightIcons} color="#26A96C" />
             <div className={styles.airplaneNumber}>3</div>
           </div>
-          <PlusCircleIcon className={styles.rightIcons} color="#26A96C" />
           <UserGroupIcon className={styles.rightIcons} color="#26A96C" />
           <HeartIcon className={styles.rightIcons} color="#26A96C" />
           {isLoggedIn ? (
-            <img
-              className={`${styles.avatar} ${styles.rightIcons} `}
-              // src="https://res.cloudinary.com/dvgbdioec/image/upload/v1641473906/x92clfsasiacrsyoxci6.jpg"
-              src={avatar}
-              alt="profile"
-            />
-          ) : null}
+            <Link to="/profile">
+              <img
+                className={`${styles.avatar} ${styles.rightIcons} `}
+                // src="https://res.cloudinary.com/dvgbdioec/image/upload/v1641473906/x92clfsasiacrsyoxci6.jpg"
+                src={avatar}
+                alt="profile"
+              />
+            </Link>
+          ) : (
+            <Link to="/register">
+              <PlusCircleIcon className={styles.rightIcons} color="#26A96C" />
+            </Link>
+          )}
         </div>
       </div>
     </div>
