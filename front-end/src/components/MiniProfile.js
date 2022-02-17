@@ -36,8 +36,6 @@ const MiniProfile = ({ isLoggedIn, setIsLoggedIn }) => {
     getProfile()
   }, [isLoggedIn])
 
-  console.log(profile)
-
   const navigate = useNavigate()
 
   return (

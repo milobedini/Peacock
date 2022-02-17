@@ -12,7 +12,6 @@ const Stories = () => {
       const userId = getUserId()
       const response = await axios.get('/api/users')
       const data = response.data.filter((user) => user._id !== userId)
-      console.log(data)
       setStories(data)
     }
     getStories()

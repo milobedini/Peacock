@@ -10,6 +10,7 @@ const Posts = ({ modalOpen }) => {
     const getPosts = async () => {
       const response = await axios.get('/api/posts')
       setPosts(response.data)
+      console.log(response.data)
     }
     getPosts()
   }, [modalOpen])
@@ -23,6 +24,7 @@ const Posts = ({ modalOpen }) => {
           userImage={post.owner.avatar}
           postImage={post.image}
           caption={post.caption}
+          created={post.createdAt}
         />
       ))}
     </div>

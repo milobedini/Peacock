@@ -11,7 +11,6 @@ const Suggestions = () => {
       const userId = getUserId()
       const response = await axios.get('/api/randomusers')
       const suggestions = response.data.filter((user) => user._id !== userId)
-      console.log(suggestions)
       setSuggestions(suggestions)
     }
     getSuggestions()

@@ -9,6 +9,7 @@ import { getToken } from './helpers/auth'
 import Profile from './pages/Profile'
 import NewPost from './pages/NewPost'
 import 'react-toastify/dist/ReactToastify.css'
+import EditPost from './pages/EditPost'
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -50,6 +51,7 @@ function App() {
           />
           <Route path="/profile" element={<Profile />} />
           <Route path="/newpost" element={<NewPost />} />
+          <Route path="/posts/:id/edit" element={<EditPost />} />
         </Routes>
       </BrowserRouter>
     </div>

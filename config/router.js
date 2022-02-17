@@ -1,6 +1,11 @@
 import express from 'express'
 import { loginUser, registerUser } from '../controllers/auth.js'
-import { addPost, getAllPosts } from '../controllers/posts.js'
+import {
+  addPost,
+  deletePost,
+  getAllPosts,
+  getSinglePost,
+} from '../controllers/posts.js'
 import {
   getAllUsers,
   getRandomUsers,
@@ -11,6 +16,8 @@ import { secureRoute } from './secureRoute.js'
 const router = express.Router()
 
 router.route('/posts').get(getAllPosts).post(secureRoute, addPost)
+
+router.route('/posts/:id').get(getSinglePost).delete(secureRoute, deletePost)
 
 router.route('/users').get(getAllUsers)
 
