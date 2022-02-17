@@ -5,6 +5,7 @@ import {
   deletePost,
   getAllPosts,
   getSinglePost,
+  updatePost,
 } from '../controllers/posts.js'
 import {
   getAllUsers,
@@ -17,7 +18,11 @@ const router = express.Router()
 
 router.route('/posts').get(getAllPosts).post(secureRoute, addPost)
 
-router.route('/posts/:id').get(getSinglePost).delete(secureRoute, deletePost)
+router
+  .route('/posts/:id')
+  .get(getSinglePost)
+  .delete(secureRoute, deletePost)
+  .put(secureRoute, updatePost)
 
 router.route('/users').get(getAllUsers)
 

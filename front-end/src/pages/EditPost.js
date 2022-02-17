@@ -1,20 +1,32 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import ImageUploadField from '../components/ImageUploadField'
+import { getToken } from '../helpers/auth'
 import styles from '../styles/NewPost.module.scss'
 
 const EditPost = () => {
   const { id } = useParams()
+  const navigate = useNavigate()
 
-  const [newData, setNewData] = useState({})
-  const [oldData, setOldData] = useState({})
+  const [newData, setNewData] = useState({
+    image: '',
+    caption: '',
+  })
+  const [oldData, setOldData] = useState({
+    image: '',
+    caption: '',
+  })
 
   useEffect(() => {
     const getPost = async () => {
       try {
         const response = await axios.get(`/api/posts/${id}`)
+        setOldData({
+          image: response.data.image,
+          caption: response.data.caption,
+        })
         console.log(response.data)
       } catch (err) {
         console.log(err)
@@ -23,16 +35,46 @@ const EditPost = () => {
     getPost()
   }, [id])
 
+  const handleImageUrl = (url) => {
+    setNewData({ ...newData, image: url })
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    try {
+      const config = {
+        method: 'put',
+        data: newData,
+        url: `/api/posts/${id}`,
+        headers: {
+          Authorization: `Bearer ${getToken()}`,
+          'Content-Type': 'application/json',
+        },
+      }
+      const res = await axios(config)
+      console.log(res.data)
+      setTimeout(() => {
+        navigate('/')
+      }, 3000)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const handleFormChange = (event) => {
+    const { name, value } = event.target
+    setNewData({ ...newData, [name]: value })
+    console.log(newData)
+  }
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.formWrapper}>
-        <form
-          className={styles.form}
-          // onSubmit={handleSubmit}
-        >
+        <form className={styles.form} onSubmit={handleSubmit}>
           <ImageUploadField
-          // value={data.image}
-          // handleImageUrl={handleImageUrl}
+            value={newData.image}
+            handleImageUrl={handleImageUrl}
+            oldImage={oldData.image}
           />
 
           <div className={styles.inputDiv}>
@@ -41,7 +83,8 @@ const EditPost = () => {
               id="caption"
               name="caption"
               placeholder="Your caption..."
-              //   onChange={handleFormChange}
+              defaultValue={oldData.caption}
+              onChange={handleFormChange}
             />
             <label className={styles.formLabel} htmlFor="caption"></label>
           </div>

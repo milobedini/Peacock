@@ -3,7 +3,8 @@ import styles from '../styles/NewPost.module.scss'
 
 const uploadUrl = process.env.REACT_APP_CLOUDINARY_URL
 const uploadPreset = process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
-const ImageUploadField = ({ value, handleImageUrl }) => {
+
+const ImageUploadField = ({ value, handleImageUrl, oldImage }) => {
   const handleUpload = async (event) => {
     const data = new FormData()
     data.append('file', event.target.files[0])
@@ -21,6 +22,11 @@ const ImageUploadField = ({ value, handleImageUrl }) => {
         </div>
       ) : (
         <>
+          {oldImage && (
+            <div className={styles.previewPic}>
+              <img src={oldImage} alt="" />
+            </div>
+          )}
           <input
             type="file"
             id="image"
