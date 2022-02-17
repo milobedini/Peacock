@@ -1,5 +1,5 @@
 import axios from 'axios'
-import styles from '../styles/NewPost.module.scss'
+import styles from '../styles/EditPost.module.scss'
 
 const uploadUrl = process.env.REACT_APP_CLOUDINARY_URL
 const uploadPreset = process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET
@@ -15,7 +15,7 @@ const ImageUploadField = ({ value, handleImageUrl, oldImage }) => {
   }
 
   return (
-    <div className={styles.inputDiv}>
+    <div className={styles.imgUploadDiv}>
       {value ? (
         <div className={styles.previewPic}>
           <img src={value} alt="" />

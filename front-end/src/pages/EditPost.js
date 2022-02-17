@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import ImageUploadField from '../components/ImageUploadField'
 import { getToken } from '../helpers/auth'
-import styles from '../styles/NewPost.module.scss'
+import styles from '../styles/EditPost.module.scss'
 
 const EditPost = () => {
   const { id } = useParams()

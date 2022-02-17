@@ -41,9 +41,9 @@
 }
 
 .previewPic {
-  // margin: 1.5rem 0;
   border-radius: 8px;
-  // background-color: white;
+  max-height: 30vh;
+
   img {
     object-fit: cover;
     width: 100%;
