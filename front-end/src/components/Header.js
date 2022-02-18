@@ -11,11 +11,12 @@ import {
 } from '@heroicons/react/solid'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { getToken } from '../helpers/auth'
+import { getToken, getUserId } from '../helpers/auth'
 import axios from 'axios'
 
 const Header = ({ isLoggedIn, modalOpen, setModalOpen }) => {
   const [avatar, setAvatar] = useState('')
+  const userId = getUserId()
   useEffect(() => {
     async function getProfPic() {
       if (!isLoggedIn) {
@@ -23,7 +24,7 @@ const Header = ({ isLoggedIn, modalOpen, setModalOpen }) => {
       }
       const config = {
         method: 'get',
-        url: '/api/profile',
+        url: `/api/profile/${userId}`,
         headers: {
           Authorization: `Bearer ${getToken()}`,
           'Content-Type': 'application/json',
@@ -71,7 +72,7 @@ const Header = ({ isLoggedIn, modalOpen, setModalOpen }) => {
               </div>
               <UserGroupIcon className={styles.rightIcons} color="#26A96C" />
               <HeartIcon className={styles.rightIcons} color="#26A96C" />
-              <Link to="/profile">
+              <Link to={`/profile/${userId}`}>
                 <img
                   className={`${styles.avatar} ${styles.rightIcons} `}
                   // src="https://res.cloudinary.com/dvgbdioec/image/upload/v1641473906/x92clfsasiacrsyoxci6.jpg"

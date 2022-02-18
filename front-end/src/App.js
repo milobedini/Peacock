@@ -49,7 +49,7 @@ function App() {
             path="/login"
             element={<Login setIsLoggedIn={setIsLoggedIn} />}
           />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/:id" element={<Profile />} />
           <Route path="/newpost" element={<NewPost />} />
           <Route path="/posts/:id/edit" element={<EditPost />} />
         </Routes>

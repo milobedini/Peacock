@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { getToken } from '../helpers/auth'
+import { getToken, getUserId } from '../helpers/auth'
 import styles from '../styles/Profile.module.scss'
 import { Link } from 'react-router-dom'
 import AvatarEdit from './AvatarEdit'
@@ -9,11 +9,13 @@ const Profile = () => {
   const [profile, setProfile] = useState({})
   const [modalOpen, setModalOpen] = useState(false)
 
+  const userId = getUserId()
+
   useEffect(() => {
     async function getProfile() {
       const config = {
         method: 'get',
-        url: '/api/profile',
+        url: `/api/profile/${userId}`,
         headers: {
           Authorization: `Bearer ${getToken()}`,
           'Content-Type': 'application/json',

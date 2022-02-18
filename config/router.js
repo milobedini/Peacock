@@ -11,6 +11,7 @@ import {
   getAllUsers,
   getRandomUsers,
   getUserProfile,
+  updateAvatar,
 } from '../controllers/users.js'
 import { secureRoute } from './secureRoute.js'
 
@@ -32,6 +33,9 @@ router.route('/register').post(registerUser)
 
 router.route('/login').post(loginUser)
 
-router.route('/profile').get(secureRoute, getUserProfile)
+router
+  .route('/profile/:id')
+  .get(secureRoute, getUserProfile)
+  .put(secureRoute, updateAvatar)
 
 export default router

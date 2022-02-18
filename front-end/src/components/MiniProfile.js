@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   getToken,
+  getUserId,
   removeToken,
   removeUserId,
   removeUsername,
@@ -10,6 +11,8 @@ import {
 import styles from '../styles/MiniProfile.module.scss'
 
 const MiniProfile = ({ isLoggedIn, setIsLoggedIn }) => {
+  const userId = getUserId()
+
   const handleLogout = () => {
     removeToken()
     removeUserId()
@@ -24,7 +27,7 @@ const MiniProfile = ({ isLoggedIn, setIsLoggedIn }) => {
       }
       const config = {
         method: 'get',
-        url: '/api/profile',
+        url: `/api/profile/${userId}`,
         headers: {
           Authorization: `Bearer ${getToken()}`,
           'Content-Type': 'application/json',

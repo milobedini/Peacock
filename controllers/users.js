@@ -43,3 +43,18 @@ export const getUserProfile = async (req, res) => {
     return res.status(404).json({ message: 'Not Found' })
   }
 }
+
+export const updateAvatar = async (req, res) => {
+  try {
+    const { id } = req.params
+    const updatedUser = await User.findByIdAndUpdate(id, {
+      ...req.body,
+      avatar: req.body.image,
+      new: true,
+    })
+    return res.status(201).json(updatedUser)
+  } catch (err) {
+    console.log(err)
+    return res.status(404).json({ message: 'Not Found' })
+  }
+}
