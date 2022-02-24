@@ -8,13 +8,27 @@ import {
   PaperAirplaneIcon,
 } from '@heroicons/react/outline'
 import { timeSince } from '../helpers/functions'
-import { getToken, getUsername } from '../helpers/auth'
+import { getToken, getUserId, getUsername } from '../helpers/auth'
 import axios from 'axios'
 import { toast, ToastContainer } from 'react-toastify'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
-const Post = ({ id, username, userImage, postImage, caption, created }) => {
+const Post = ({
+  id,
+  username,
+  userImage,
+  postImage,
+  caption,
+  created,
+  likedBy,
+  setLikeClicked,
+  likeClicked,
+}) => {
+  const [userLiked, hasUserLiked] = useState()
+
   const currentUser = getUsername()
+  const userId = getUserId()
 
   const onDeleteClick = async () => {
     console.log(id)
@@ -40,6 +54,20 @@ const Post = ({ id, username, userImage, postImage, caption, created }) => {
     setTimeout(() => {
       window.location.reload()
     }, 2000)
+  }
+
+  const onLikeClick = async () => {
+    const config = {
+      method: 'put',
+      url: `/api/posts/${id}/like`,
+      headers: {
+        Authorization: `Bearer ${getToken()}`,
+        'Content-Type': 'application/json',
+      },
+    }
+    const response = await axios(config)
+    setLikeClicked([...likeClicked, true])
+    console.log(response.data)
   }
 
   return (
@@ -72,13 +100,18 @@ const Post = ({ id, username, userImage, postImage, caption, created }) => {
       {/* Buttons */}
       <div className={styles.buttonWrapper}>
         <div className={styles.postButtonContainer}>
-          <HeartEmpty color="#fa3e3e" className={styles.postButton} />
+          <HeartEmpty
+            color="#fa3e3e"
+            className={styles.postButton}
+            onClick={onLikeClick}
+          />
           <ChatIcon className={styles.postButton} color="#26A96C" />
           <PaperAirplaneIcon className={styles.postButton} color="#26A96C" />
         </div>
         <BookmarkIcon className={styles.postButton} />
       </div>
       {/* Caption */}
+      <p>{likedBy.length} likes</p>
       <p className={styles.captionText}>
         <span>{username} </span>
         {caption}

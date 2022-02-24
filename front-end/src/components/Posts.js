@@ -2,9 +2,13 @@
 import { useEffect, useState } from 'react'
 import Post from './Post'
 import axios from 'axios'
+import { getUserId } from '../helpers/auth'
 
 const Posts = ({ modalOpen }) => {
   const [posts, setPosts] = useState([])
+  const [likeClicked, setLikeClicked] = useState([false])
+  const [userLiked, setUserLiked] = useState(null)
+  const userId = getUserId()
 
   useEffect(() => {
     const getPosts = async () => {
@@ -13,7 +17,7 @@ const Posts = ({ modalOpen }) => {
       console.log(response.data)
     }
     getPosts()
-  }, [modalOpen])
+  }, [modalOpen, likeClicked])
   return (
     <div>
       {posts.map((post) => (
@@ -25,6 +29,9 @@ const Posts = ({ modalOpen }) => {
           postImage={post.image}
           caption={post.caption}
           created={post.createdAt}
+          likedBy={post.likedBy}
+          setLikeClicked={setLikeClicked}
+          likeClicked={likeClicked}
         />
       ))}
     </div>

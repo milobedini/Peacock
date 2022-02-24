@@ -1,6 +1,7 @@
 import express from 'express'
 import { loginUser, registerUser } from '../controllers/auth.js'
 import {
+  addLikedBy,
   addPost,
   deletePost,
   getAllPosts,
@@ -24,6 +25,8 @@ router
   .get(getSinglePost)
   .delete(secureRoute, deletePost)
   .put(secureRoute, updatePost)
+
+router.route('/posts/:id/like').put(secureRoute, addLikedBy)
 
 router.route('/users').get(getAllUsers)
 

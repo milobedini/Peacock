@@ -60,3 +60,22 @@ export const updatePost = async (req, res) => {
     return res.status(404).json({ message: 'Post Not Found' })
   }
 }
+
+export const addLikedBy = async (req, res) => {
+  try {
+    console.log('hello')
+    const { id } = req.params
+    const post = await Post.findById(id)
+    if (!post) throw new Error('Post not found!')
+    if (post.likedBy.includes(req.currentUser._id)) {
+      throw new Error('User has already liked this post.')
+    }
+    post.likedBy.push(req.currentUser._id)
+    console.log(`pushed ${req.currentUser._id} in to likes`)
+    await post.save({ validateModifiedOnly: true })
+    return res.status(200).json(post)
+  } catch (err) {
+    console.log(err)
+    return res.status(404).json({ message: err.message })
+  }
+}

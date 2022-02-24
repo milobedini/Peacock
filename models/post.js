@@ -21,6 +21,8 @@ const postSchema = new mongoose.Schema(
   { timestamps: true }
 )
 
+// Liked by.
+
 postSchema.set('toJSON')
 
 postSchema.plugin(uniqueValidator)

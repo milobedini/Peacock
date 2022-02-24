@@ -13,6 +13,8 @@ const userSchema = new mongoose.Schema({
   },
 })
 
+//Bookmarked posts.
+
 userSchema.virtual('createdPosts', {
   ref: 'Post',
   localField: '_id',
